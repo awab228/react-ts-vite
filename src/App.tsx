@@ -75,10 +75,11 @@ function App() {
         </div>
         <hr />
         <div>
-          <h5>Expense List</h5>
+          <h5>Expense List Form</h5>
           <div className="mb-5">
             <ExpenseForm />
           </div>
+          <h5>Expense List</h5>
           <div className="mb-3">
             <ExpenseFilter
               onSelectCategory={(category) => setSelectedCategory(category)}
