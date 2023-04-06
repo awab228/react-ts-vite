@@ -6,17 +6,21 @@ import Like from "./components/Like";
 import ExpandableText from "./components/ExpandableText";
 import Form from "./components/Form";
 import ExpenseList from "./expense-tracker/components/ExpenseList";
+import ExpenseFilter from "./expense-tracker/components/ExpenseFilter";
 
 function App() {
   const items = ["New York", "Tokyo", "London", "DC"];
   const [expenses, setExpenses] = useState([
-    { id: 1, description: "USB Cable", amount: 100, category: "utitities" },
-    { id: 2, description: "iPhone X", amount: 10, category: "utitities" },
-    { id: 3, description: "Type-C Cable", amount: 20, category: "utitities" },
-    { id: 4, description: "Water", amount: 120, category: "utitities" },
+    { id: 1, description: "USB Cable", amount: 100, category: "Utilites" },
+    { id: 2, description: "iPhone X", amount: 10, category: "Utilites" },
+    { id: 3, description: "Type-C Cable", amount: 20, category: "Utilites" },
+    { id: 4, description: "Water", amount: 120, category: "Utilites" },
   ]);
   const [alertVisiable, setAlertVisiable] = useState(false);
-
+  const [selectedCategory, setSelectedCategory] = useState("");
+  const visiableExpenses = selectedCategory
+    ? expenses.filter((e) => e.category === selectedCategory)
+    : expenses;
   const handleSelectedItem = (item: string) => {
     console.log(item);
   };
@@ -71,8 +75,13 @@ function App() {
         <hr />
         <div>
           <h5>Expense List</h5>
+          <div className="mb-3">
+            <ExpenseFilter
+              onSelectCategory={(category) => setSelectedCategory(category)}
+            />
+          </div>
           <ExpenseList
-            expenses={expenses}
+            expenses={visiableExpenses}
             onDelete={(id) => setExpenses(expenses.filter((e) => e.id !== id))}
           />
         </div>
