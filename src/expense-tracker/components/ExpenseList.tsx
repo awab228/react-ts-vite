@@ -11,13 +11,13 @@ interface Props {
 const ExpenseList = ({ expenses, onDelete }: Props) => {
   if (expenses.length === 0) return null;
   return (
-    <table className="table table-boardered">
+    <table className="table table-bordered">
       <thead>
         <tr>
-          <td>Description</td>
-          <td>Amount</td>
-          <td>Category</td>
-          <td></td>
+          <th>Description</th>
+          <th>Amount</th>
+          <th>Category</th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
