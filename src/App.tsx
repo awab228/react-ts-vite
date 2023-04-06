@@ -77,7 +77,14 @@ function App() {
         <div>
           <h5>Expense List Form</h5>
           <div className="mb-5">
-            <ExpenseForm />
+            <ExpenseForm
+              onSubmit={(newExpense) =>
+                setExpenses([
+                  ...expenses,
+                  { ...newExpense, id: expenses.length + 1 },
+                ])
+              }
+            />
           </div>
           <h5>Expense List</h5>
           <div className="mb-3">
