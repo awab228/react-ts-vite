@@ -3,8 +3,12 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import categories from "../categories";
 
+interface Props {
+  onSubmit: (data: ExpenseFormData) => void;
+}
+
 const schema = z.object({
-  desription: z
+  description: z
     .string()
     .min(3, { message: "Description should be at least 3 char" })
     .max(50),
@@ -19,27 +23,33 @@ const schema = z.object({
 
 type ExpenseFormData = z.infer<typeof schema>;
 
-const ExpenseForm = () => {
+const ExpenseForm = ({ onSubmit }: Props) => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<ExpenseFormData>({ resolver: zodResolver(schema) });
 
   return (
-    <form onSubmit={handleSubmit((data) => console.log(data))}>
+    <form
+      onSubmit={handleSubmit((data) => {
+        onSubmit(data);
+        reset();
+      })}
+    >
       <div className="mb-3">
         <label htmlFor="description" className="form-label">
           Description
         </label>
         <input
-          {...register("desription")}
+          {...register("description")}
           id="description"
           type="text"
           className="form-control"
         />
-        {errors.desription && (
-          <p className="text-danger">{errors.desription.message}</p>
+        {errors.description && (
+          <p className="text-danger">{errors.description.message}</p>
         )}
       </div>
       <div className="mb-3">
