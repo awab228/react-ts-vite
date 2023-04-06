@@ -15,6 +15,7 @@ const Form = () => {
           Name
         </label>
         <input
+          value={person.name}
           onChange={(event) => {
             setPerson({ ...person, name: event.target.value });
           }}
@@ -28,6 +29,7 @@ const Form = () => {
           Age
         </label>
         <input
+          value={person.age}
           onChange={(event) => {
             setPerson({ ...person, age: event.target.value });
           }}
