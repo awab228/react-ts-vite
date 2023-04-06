@@ -2,6 +2,7 @@ import ListGroup from "./components/ListGroup";
 import Alert from "./components/Alert";
 import Button from "./components/Button";
 import { useState } from "react";
+import Like from "./components/Like";
 
 function App() {
   const items = ["New York", "Tokyo", "London", "DC"];
@@ -26,6 +27,7 @@ function App() {
       <Button color="primary" onClick={() => setAlertVisiable(true)}>
         Show Alert
       </Button>
+      <Like onClick={() => console.log("Like Clicked")} />
     </div>
   );
 }
