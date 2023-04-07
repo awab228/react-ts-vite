@@ -8,6 +8,7 @@ import Form from "./components/Form";
 import ExpenseList from "./expense-tracker/components/ExpenseList";
 import ExpenseFilter from "./expense-tracker/components/ExpenseFilter";
 import ExpenseForm from "./expense-tracker/components/ExpenseForm";
+import UserList from "./components/UserList";
 
 function App() {
   const items = ["New York", "Tokyo", "London", "DC"];
@@ -97,6 +98,11 @@ function App() {
             onDelete={(id) => setExpenses(expenses.filter((e) => e.id !== id))}
           />
         </div>
+        <hr />
+        <div>
+          <h5>Users List fetched From API</h5>
+        </div>
+        <UserList />
       </div>
     </>
   );
